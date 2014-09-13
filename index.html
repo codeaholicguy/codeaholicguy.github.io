@@ -230,6 +230,7 @@
 							"key": "syLtjylMFF75sKAvr747kQ",
 							"message": {
 							  "from_email": email,
+							  "from_name": name,
 							  "to": [
 								  {
 									"email": reciever,
@@ -238,8 +239,8 @@
 								  }
 								],
 							  "autotext": "true",
-							  "subject": "Contact from porfolio by " + email,
-							  "html": content
+							  "subject": "Contact from porfolio by " + name + " - Email: " + email,
+							  "html": "Hi, I'm " + name, + "\n\n" + content
 							}
 						},
 					    success: function(response) {
