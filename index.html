@@ -185,7 +185,7 @@
 
 							<p>I look forward to hearing from you.</p>
 							
-							<form method="post" action="#">
+							<form>
 								<div class="row half">
 									<div class="6u"><input type="text" name="name" placeholder="Name" id="send-name"/></div>
 									<div class="6u"><input type="text" name="email" placeholder="Email" id="send-email"/></div>
@@ -218,36 +218,37 @@
 			</div>
 
 			<script>
-				$("#send-message").on('click', function(evt) {
+				$("#send-message").unbind('click').click(function(evt) {
 					var name = $("#send-name").val();
 					var email = $("#send-email").val();
 					var content = $("#send-content").val();
 					var reciever = "hoangnn93@gmail.com";
 					$.ajax({
-					  type: 'POST',
-					  url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-					  data: {
-						"key": "syLtjylMFF75sKAvr747kQ",
-						"message": {
-						  "from_email": email,
-						  "to": [
-							  {
-								"email": reciever,
-								"name": "Hoàng Nguyễn",
-								"type": "to"
-							  }
-							],
-						  "autotext": "true",
-						  "subject": "Contact from porfolio by " + email,
-						  "html": content
+					    type: 'POST',
+					    url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+					    data: {
+							"key": "syLtjylMFF75sKAvr747kQ",
+							"message": {
+							  "from_email": email,
+							  "to": [
+								  {
+									"email": reciever,
+									"name": "Hoàng Nguyễn",
+									"type": "to"
+								  }
+								],
+							  "autotext": "true",
+							  "subject": "Contact from porfolio by " + email,
+							  "html": content
+							}
+						},
+					    success: function(response) {
+						    if (response[0].status == "sent") {
+								$.msgbox("Message has been sent.", {type: "info"});
+						    } else {
+								$.msgbox("Have some problem, try again later.", {type: "error"});
+						    }
 						}
-					  }
-					}).done(function(response) {
-					   if (response[0].status == "sent") {
-							$.msgbox("Message has been sent.", {type: "info"});
-					   } else {
-							$.msgbox("Have some problem, try again later.", {type: "error"});
-					   }
 					});
 					evt.preventDefault();
 				});
