@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="4u match-tile" ng-repeat="match in liveMatches">
+        <article class="item match">
+            <header>
+                <h3>
+                    <strong>{{match.team1.name}}</strong>
+                    <strong class="score">{{match.result}}</strong>
+                    <strong>{{match.team2.name}}</strong>
+                    <strong class="match-type">{{match.bestOf}}</strong>
+                </h3>
+            </header>
+        </article>
+    </div>
+</div>

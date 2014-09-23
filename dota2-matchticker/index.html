@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app="Dota2Matchticker">
 <head>
-    <title>Dota2Matchtiker</title>
+    <title>Dota2Matchticker</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
@@ -33,7 +33,8 @@
 
         <!-- Logo -->
         <div id="logo">
-            <span class="image avatar48"><img src="images/dota2_logo.png" alt="" /></span>
+            <span class="image avatar48"><img src="images/dota2_logo.png" alt=""/></span>
+
             <h1 id="title">Dota2Matchticker</h1>
 
             <p>v0.0.1</p>
@@ -42,11 +43,13 @@
         <!-- Nav -->
         <nav id="nav">
             <ul>
-                <li><a href="#top" id="live-matches" class="skel-layers-ignoreHref"><span
+                <li><a href="#live-matches-container" id="live-matches" class="skel-layers-ignoreHref"><span
                         class="dota2-logo">Live Matches</span></a></li>
-                <li><a href="#portfolio" id="upcomming-matches" class="skel-layers-ignoreHref"><span class="dota2-logo">Upcomming Matches</span></a>
+                <li><a href="#upcomming-matches-container" id="upcomming-matches" class="skel-layers-ignoreHref"><span
+                        class="dota2-logo">Upcomming Matches</span></a>
                 </li>
-                <li><a href="#about" id="recent-matches" class="skel-layers-ignoreHref"><span class="dota2-logo">Recent Matches</span></a>
+                <li><a href="#recent-matches-container" id="recent-matches" class="skel-layers-ignoreHref"><span
+                        class="dota2-logo">Recent Matches</span></a>
                 </li>
             </ul>
         </nav>
@@ -68,13 +71,39 @@
 </div>
 
 <!-- Main -->
-<div id="main">
-    <div>
-        <img src="images/under-construction.gif" style="width: 600px; height: 600px; display: block; margin-left: auto; margin-right: auto;">
-    </div>
+<div id="main" ng-controller="MatchesController">
+    <section id="live-matches-container" class="two">
+        <header>
+            <h2>Live Matches</h2>
+        </header>
+        <div class="container">
+            <live-match></live-match>
+        </div>
+    </section>
+    <section id="upcomming-matches-container" class="two">
+        <header>
+            <h2>Upcomming Matches</h2>
+        </header>
+        <div class="container">
+            <upcomming-match></upcomming-match>
+        </div>
+    </section>
+    <section id="recent-matches-container" class="two">
+        <header>
+            <h2>Recent Matches</h2>
+        </header>
+        <div class="container">
+            <recent-match></recent-match>
+        </div>
+    </section>
 </div>
 
 <!-- Footer -->
+
+<script src="js/angular.js"></script>
+<script src="js/angular-resource.js"></script>
+
+<script src="js/app.js"></script>
 
 <script>
     (function (e, t, n, r, i, s, o) {

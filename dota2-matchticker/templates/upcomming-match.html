@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="4u match-tile" ng-repeat="match in upcommingMatches">
+        <article class="item match">
+            <header>
+                <h3>
+                    <strong>{{match.team1.name}}</strong>
+                    <i class="icon-versus"></i>
+                    <strong>{{match.team2.name}}</strong>
+                    <strong class="match-livein">Live in {{match.liveIn}}</strong>
+                </h3>
+            </header>
+        </article>
+    </div>
+</div>
