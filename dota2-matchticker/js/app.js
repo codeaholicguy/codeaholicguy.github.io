@@ -18,7 +18,7 @@ var dota2matchticker = angular.module('components', ['ngResource'])
         }
     })
 
-dota2matchticker.controller('MatchesController', function ($scope, $resource) {
+dota2matchticker.controller('MatchesController', function ($scope, $resource, $interval) {
     $scope.matchesAPI = $resource('http://app-ninja9studio.rhcloud.com/dota2-matchticker/gosugamer/matches/:action',
         {action: 'live', key: 'test'},
         {get: {method: 'GET'}});
@@ -42,6 +42,17 @@ dota2matchticker.controller('MatchesController', function ($scope, $resource) {
             }
         }
     })
+
+    // Refresh data after 60s
+    $interval(function () {
+        $scope.matchesAPI.get({action: 'live'}, function (result) {
+            $scope.liveMatches = result.data.matches;
+        })
+        $scope.matchesAPI.get({action: 'upcomming'}, function (result) {
+            $scope.upcommingMatches = result.data.matches;
+        })
+    }, 60000)
+
 })
 
 angular.module('Dota2Matchticker', ['components'])
