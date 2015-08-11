@@ -1,3 +1,7 @@
+var Configuration = {
+    API_URL: "http://localhost:9099/"
+}
+
 var dota2matchticker = angular.module('components', ['ngResource'])
     .directive('liveMatch', function () {
         return {
@@ -19,7 +23,8 @@ var dota2matchticker = angular.module('components', ['ngResource'])
     })
 
 dota2matchticker.controller('MatchesController', function ($scope, $resource, $interval) {
-    $scope.matchesAPI = $resource('http://app-ninja9studio.rhcloud.com/dota2-matchticker/gosugamer/matches/:action',
+    var apiUrl = Configuration.API_URL + 'gosugamer/matches/:action';
+    $scope.matchesAPI = $resource(apiUrl,
         {action: 'live', key: 'test'},
         {get: {method: 'GET'}});
 
