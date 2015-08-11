@@ -770,12 +770,12 @@ input[type="reset"]:active,
 
 img.match-tournament {
     display: inline-block;
-    width: 100px;
-    height: 50px;
+    width: 10%;
+    height: 10%;
     position: relative;
     float: left;
     left: 5px;
-    top: -12px;
+    top: -9px;
 }
 
 .score {
