@@ -1,5 +1,5 @@
 var Configuration = {
-    API_URL: "http://localhost:9099/"
+    API_URL: "http://dota2matchticker-codeaholicguy.rhcloud.com/dota2-matchticker/"
 }
 
 var dota2matchticker = angular.module('components', ['ngResource'])
